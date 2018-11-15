@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.tms.test</groupId>
+	<artifactId>tms-test</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>TMS Automation Test</name>
+	<description>TMS Automation Test executor</description>
+
+	<properties>
+		<spring.version>5.0.6.RELEASE</spring.version>
+		<assertj.version>3.3.0</assertj.version>
+		<javamail.version>1.4.4</javamail.version>
+		<selenium.version>3.12.0</selenium.version>
+		<testng.version>6.14.3</testng.version>
+		<jackson.version>2.7.2</jackson.version>
+		<httpclient.version>4.5.2</httpclient.version>
+		<surefire.maven.plugin.version>2.19.1</surefire.maven.plugin.version>
+		<acceptance.test.parallel.count>2</acceptance.test.parallel.count>
+		<maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
+		<junit.version>4.12</junit.version>
+		<mysql.version>8.0.13</mysql.version>
+		<phantomjsdriver.version>1.4.0</phantomjsdriver.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+	<profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>default</id>
+			<modules>
+				<module>tms-common-test</module>
+				<module>tms-ui-test</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>tms-ui-test</id>
+			<modules>
+				<module>tms-common-test</module>
+				<module>tms-ui-test</module>
+			</modules>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj.version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
+			<version>4.12</version> <scope>test</scope> </dependency> -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>${phantomjsdriver.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.13</version>
+		</dependency>
+
+	</dependencies>
+
+	<modules>
+		<module>tms-common-test</module>
+		<module>tms-ui-test</module>
+	</modules>
+
+</project>
